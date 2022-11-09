@@ -15,20 +15,32 @@ bool Node::getPermision()
 
 void Node::setPermision(bool explicit_permision)
 {
-    permission = explicit_permision;
+    this->permission = explicit_permision;
 }
 
 void Node::setPermission()
 {
-    permission = parrent->permission;
+    this->permission = parent->permission;
 }
 
 void Node::setNumber(int input_number)
 {
-    number = input_number;
+    this->number = input_number;
 }
 
 int Node::getNumber()
 {
-    return number;
+    return this->number;
+}
+void Node::setParent(Node* input_parent)
+{
+    this->parent = input_parent;
+}
+void Node::setChild(Node* input_child)
+{
+    this->parent = input_child;
+}
+Node* Node::getParent();
+{
+    return this->parent;
 }
