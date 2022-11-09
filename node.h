@@ -10,19 +10,23 @@
 class Node
 {
 private:
-    int number;             // a node's numerical value
+    int id;             // a node's numerical value
     bool permission;        // a node's bollean permision
     std::vector<Node*> childlist;
                              // vector of pinters to children nodes
 public:
+    /* default constructor */
     Node();
-    void setPermision(bool); // set permission once permission is explicitly defiend
-    void setPermission();    // set permision when explicitly defined, parrent's permision inheritance
-    void setChild(Node*);    // creats a child for a node
-    void setNumber(int);     // set a node's value
-    bool getPermision();     // reads a node permision    
-    Node* getChild(int);     //find a specific child  
-    int getNumber();         //reads a node's numerical value
+    /* set permission once permission is explicitly defiend */
+    void setPermision(bool explicit_permision); 
+    /* set permision when no exolicit permision defined 
+    must navigate from root to node's parent */
+    void setPermission(Node* root);
+    void setChild(Node* child);      // creats a child for a node
+    void setId(int input_id);      // set a node's value
+    bool getPermision();             // reads a node permision    
+    Node* getChild(int id);      //find a specific child  
+    int getId();                 //reads a node's numerical value
 };
 
 #endif // Node
