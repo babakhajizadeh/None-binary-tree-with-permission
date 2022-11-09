@@ -2,9 +2,8 @@
 
 Node::Node()
 {
-    number = 0;
+    id = 0;
     permission = false;
-    Node* parrent = NULL;
     std::vector<Node*> childlist = {};
 }
 
@@ -18,29 +17,25 @@ void Node::setPermision(bool explicit_permision)
     this->permission = explicit_permision;
 }
 
-void Node::setPermission()
+void Node::setPermission(Node* root)
 {
-    this->permission = parent->permission;
+    int m_id = this->id;
+    for (auto & node_obj : root->childlist){
+    //here we go...breadth travers algorithm
+    }
 }
 
-void Node::setNumber(int input_number)
+void Node::setId(int input_id)
 {
-    this->number = input_number;
+    this->id = input_id;
 }
 
-int Node::getNumber()
+int Node::getId()
 {
-    return this->number;
+    return this->id;
 }
-void Node::setParent(Node* input_parent)
-{
-    this->parent = input_parent;
-}
+
 void Node::setChild(Node* input_child)
 {
-    this->parent = input_child;
-}
-Node* Node::getParent();
-{
-    return this->parent;
+
 }
