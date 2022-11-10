@@ -34,4 +34,6 @@ bool Parse::parseNode(int id, int parent_id)
         std::cout << " [!] Invalid input; The root has not defined.";
         return flase;
         
+    }
+
 }
