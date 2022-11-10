@@ -6,12 +6,11 @@ class Parse
 {
 private:
     Node* node_obj;
-    std::vector<Node*> allnodeslist = {};
+    std::vector<Node*> allnodes = {};
 
 public:
-    Node* getParent();          //finds belonging parent
-    Node* creatNode(int, int);
-    Node* creatNode(int, bool);
+    bool parseNode(int, int);
+    bool parseNode(int, bool); // node is laready built
 };
 
 #endif
