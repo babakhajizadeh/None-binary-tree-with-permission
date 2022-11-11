@@ -74,8 +74,9 @@ void Parse::init()
     std::regex re("[\\)(,]");
     std::sregex_token_iterator first{raw.begin(), raw.end(), re, -1}, last;
     std::vector<std::string> tokens{first, last};
-    for (std::string node_string : tokens) {
-        if (node_string == "") continue;
-        std::cout << node_string << std::endl;
+    for (std::string sequence : tokens) {
+        if (sequence == "") continue;
+        node_string.push_back(sequence);
     }
+
 }

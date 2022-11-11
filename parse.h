@@ -5,6 +5,7 @@
 class Parse
 {
 private:
+    std::string node_string;
     std::string raw;
     Node* node_obj;
     std::vector<Node*> allnodes = {};

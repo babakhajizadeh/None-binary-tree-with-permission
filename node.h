@@ -10,6 +10,7 @@
 class Node
 {
 private:
+    std::string node_string;
     int id;                 // a node's numerical value
     bool permission;        // a node's bollean permision
     Node* parent;
