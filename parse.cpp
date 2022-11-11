@@ -23,12 +23,14 @@ bool Parse::parseNode(int id, bool permission) //Node already created only permi
         Node* m_currentNode = NULL;
         for(auto node : allnodes) //finds nodes with id
         {
-            if (node->getId() == id) m_currentNode = node;
-            break; 
+            if (node->getId() == id){ 
+                m_currentNode = node;
+                break;
+            } 
         }
         if (m_currentNode == NULL) 
         { 
-            std::cout << " [!] Node not found, Id not Exist";
+            std::cout << " [!] Error,Node not found, Id not Exist";
             return false;
         }
         m_currentNode->setPermision(permission); //set permision to founded node
@@ -43,6 +45,11 @@ bool Parse::parseNode(int id, int parent_id)
         std::cout << " [!] Invalid input; The root has not defined.";
         return false;
     }
+    if (id == parent_id)
+    {
+        std::cout << " [!] Error, a Node's id and it's parent's id can not be the same ";
+        return false;
+    }
     node_obj = new Node;
     node_obj->setId(id);
     Node* m_currentParent;
@@ -54,5 +61,14 @@ bool Parse::parseNode(int id, int parent_id)
         }
     }
     m_currentParent->setChild(node_obj);
+    node_obj->setParent(m_currentParent);
     node_obj->setPermission(); //parent's permission will be used
+}
+void Parse::init()
+{
+    std::cout << " [i] input raw string containing menu sequences\n";
+    std::cout << " [example] (2.1),(3,1),(4,1),(5,2),(6,2),(2,false),(7,3)\n";
+    std::cout << "input:";
+    std::getline(std::cin, raw);
+
 }
