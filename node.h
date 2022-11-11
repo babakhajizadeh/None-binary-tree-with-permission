@@ -26,7 +26,7 @@ public:
     void setPermission();
     void setParent(Node* input_parent);    // set a parent for node
     void setChild(Node* input_child);      // sets a child for a node
-    bool getPermision();                   // reads a node permision    
+    bool getPermission();                   // reads a node permision    
     Node* getChild(int id);                //find a specific child  
     int getId();                           //reads a node's numerical value
 };
