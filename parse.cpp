@@ -1,3 +1,4 @@
+#include <regex>
 #include "parse.h"
 
 bool Parse::parseNode(int id, bool permission) //Node already created only permission operation
@@ -70,5 +71,11 @@ void Parse::init()
     std::cout << " [example] (2.1),(3,1),(4,1),(5,2),(6,2),(2,false),(7,3)\n";
     std::cout << "input:";
     std::getline(std::cin, raw);
-
+    std::regex re("[\\)(,]");
+    std::sregex_token_iterator first{raw.begin(), raw.end(), re, -1}, last;
+    std::vector<std::string> tokens{first, last};
+    for (std::string node_string : tokens) {
+        if (node_string == "") continue;
+        std::cout << node_string << std::endl;
+    }
 }
