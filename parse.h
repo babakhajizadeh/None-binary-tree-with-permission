@@ -14,8 +14,8 @@ private:
 public:
     bool init();  //responsible to call proper parse method
     bool parseNode(int, int);
-    bool parseNode(int, bool); // node is laready built
+    bool parseNode(int, std::string); // node is laready built
     void display();
 };
 
-#endif
+#endif 

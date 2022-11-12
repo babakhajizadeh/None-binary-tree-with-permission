@@ -3,7 +3,7 @@
 Node::Node()
 {
     id = 0;
-    permission = false;
+    permission = "not_set"; //defualt permission
     Node* parent = NULL;
     std::vector<Node*> childlist = {};
 }
@@ -13,14 +13,9 @@ void Node::setId(int input_id)
     this->id = input_id;
 }
 
-void Node::setPermision(bool explicit_permision)
+void Node::setPermision(std::string explicit_permision)
 {
     this->permission = explicit_permision;
-}
-
-void Node::setPermission()
-{
-    this->permission = parent->getPermission();
 }
 
 void Node::setParent(Node* input_parent)
@@ -33,9 +28,11 @@ void Node::setChild(Node* input_child)
     this->childlist.push_back(input_child);
 }
 
-bool Node::getPermission()
+std::string Node::getPermission()
 {
-    return this->permission;
+    if (this->permission != "not_set")
+        return this->permission;
+    else return parent->getPermission();
 }
 
 int Node::getId()

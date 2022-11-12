@@ -1,7 +1,7 @@
 #include <regex>
 #include "parse.h"
 
-bool Parse::parseNode(int id, bool permission) //Node already created only permission operation
+bool Parse::parseNode(int id, std::string permission) //Node already created only permission operation
 {
     Node* m_currentNode = NULL;
     for(auto node : allnodes) //finds nodes with id
@@ -28,7 +28,7 @@ bool Parse::parseNode(int id, int parent_id)
     if (allnodes.empty()){
         Node* root = new Node;
         root->setId(1);
-        root->setPermision(true);
+        root->setPermision("true");
         allnodes.push_back(root);
     }
     if (id == parent_id)
@@ -48,7 +48,6 @@ bool Parse::parseNode(int id, int parent_id)
     }
     m_currentParent->setChild(node_obj);
     node_obj->setParent(m_currentParent);
-    node_obj->setPermission(); //parent's permission will be used
     allnodes.push_back(node_obj);
     return true;
 }
@@ -71,14 +70,14 @@ bool Parse::init()
         if (node_string[i+1] == "true"){
             std::cout << " [ l 72 debug parsenode() is called with " << std::stoi(node_string[i])
                       << " and " << "true" << std::endl;
-            init_status = parseNode(std::stoi(node_string[i]),true);
+            init_status = parseNode(std::stoi(node_string[i]),"true");
             i++;
             continue;
         }
         if (node_string[i+1] == "false"){
             std::cout << " [ l 79 debug parsenode() is called with " << std::stoi(node_string[i])
                       << " and " << "false" << std::endl;
-            init_status = parseNode(std::stoi(node_string[i]),false);
+            init_status = parseNode(std::stoi(node_string[i]),"false");
             i++;
             continue;
         }
@@ -93,9 +92,9 @@ bool Parse::init()
 void Parse::display()
 {
     for(auto node : allnodes){
-        if (node->getPermission() == true) std::cout << " [i] sub-menu " << node->getId() 
+        if (node->getPermission() == "true") std::cout << " [i] sub-menu " << node->getId() 
                                                      << " is accessed.\n"; 
-        if (node->getPermission() == false) std::cout << " [i] sub-menu " << node->getId() 
+        if (node->getPermission() == "false") std::cout << " [i] sub-menu " << node->getId() 
                                                      << " is denied.\n";
     }
 }
